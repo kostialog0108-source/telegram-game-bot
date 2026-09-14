@@ -1,9 +1,14 @@
+import os
 import asyncio
+
 from aiogram import Bot, Dispatcher
 from aiogram.filters import CommandStart
 from aiogram.types import Message
 
-TOKEN = "YOUR_TOKEN_HERE"
+TOKEN = os.getenv("BOT_TOKEN")
+
+if not TOKEN:
+    raise ValueError("BOT_TOKEN is not set")
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
@@ -13,7 +18,7 @@ dp = Dispatcher()
 async def start(message: Message):
     await message.answer(
         "👋 Добро пожаловать!\n\n"
-        "Это начало твоей игры."
+        "Это начало твоей игры 🎮"
     )
 
 
